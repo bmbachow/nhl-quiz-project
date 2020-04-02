@@ -4,24 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHL Quiz</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body>
 
-<section class='start-section'>
+<header>
+<!-- shows on all pages -->
+</header>
+
+<section class="start-section">
   <h1>NHL Quiz</h1>
-  <button class='start-button'>Start Quiz</button>
+  <button id="startQuizButton">Start Quiz</button>
 </section>
 
-<section class='quiz-section'>
+<section class="quiz-section">
+  <div id="question-wrapper">
+    <h1 id="question"></h1>
+    <div id="choices"></div>
+  </div>
+  <div id="questionNumberDisplay"></div>
+  </section>
+
+<section class="result-section">
+  <h1>Final Score</h1>
+  <h2 id="finalScore"></h2>
+  <div id="result_message"></div>
+  <button id="tryagain">Retry Quiz</button>
 </section>
 
-<section class='results-section'>
-</section>
-
-
-  <script>app.js</script>
-  <script>src='https://code.jquery.com/jquery-3.4.1.min.js'</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  
+<script src="app.js"></script>
+  
 </body>
 
 </html>
