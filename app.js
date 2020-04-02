@@ -41,6 +41,7 @@ function questionDisplay(){
   $('#questionNumberDisplay').text(`Question ${currentQuestionNumber + 1} of ${totalNumberOfQuestions}`);
 }
 
+
 function startQuiz(){
   $('#startQuizButton').click(function(){
     $('.result-section').hide();
@@ -49,18 +50,34 @@ function startQuiz(){
     $('#result_msg').empty();
     questionDisplay();
   });
+}
 
-
-
-};
-
-
+// function answerQuestions(){
+//   $('.quiz-section').on('click', '.option', function(){
+//     let userAnswer = $('input[class="option"]:checked').val();
+//     let correctAnswer = questionsArray[currentQuestionNumber].questionCorrectChoice;
+//     if (userAnswer === correctAnswer){
+//       totalNumberOfCorrectAnswers++;
+//     }
+//     if ((currentQuestionNumber + 1) === totalNumberOfQuestions){
+//     $('#finalScore').text(`${totalNumberOfCorrectAnswers}/${totalNumberOfQuestions}`);
+//     $('.quiz-section').hide();
+//     $('.start-section').hide();
+//     $('.result-section').show();
+//     }
+    
+//     else {
+//       currentQuestionNumber++;
+//       questionDisplay();
+//     }
+//   });
 
 
 
 
 function handleQuizApp(){
   startQuiz();
+  // answerQuestions();
 }
 
 $(handleQuizApp());
