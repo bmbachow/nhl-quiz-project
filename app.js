@@ -52,32 +52,51 @@ function startQuiz(){
   });
 }
 
-// function answerQuestions(){
-//   $('.quiz-section').on('click', '.option', function(){
-//     let userAnswer = $('input[class="option"]:checked').val();
-//     let correctAnswer = questionsArray[currentQuestionNumber].questionCorrectChoice;
-//     if (userAnswer === correctAnswer){
-//       totalNumberOfCorrectAnswers++;
-//     }
-//     if ((currentQuestionNumber + 1) === totalNumberOfQuestions){
-//     $('#finalScore').text(`${totalNumberOfCorrectAnswers}/${totalNumberOfQuestions}`);
-//     $('.quiz-section').hide();
-//     $('.start-section').hide();
-//     $('.result-section').show();
-//     }
+function answerQuestions(){
+  $('.quiz-section').on('click', '.option', function(){
+    let userAnswer = $('input[class="option"]:checked').val();
+    let correctAnswer = questionsArray[currentQuestionNumber].questionCorrectChoice;
+    if (userAnswer == correctAnswer){
+      totalNumberOfCorrectAnswers++;
+      $('#images').html('<img class=\'celly\' src=\'images/celebration.jpg\'>');
+    }
     
-//     else {
-//       currentQuestionNumber++;
-//       questionDisplay();
-//     }
-//   });
+    else {
+      $('#images').html('<h3>The correct answer was ' + correctAnswer +'.</h3><img class=\'celly\' src=\'images/bodycheck.jpg\'>');
+    }
 
+    if ((currentQuestionNumber + 1) === totalNumberOfQuestions){
+      $('.finalScore').text(`${totalNumberOfCorrectAnswers}/${totalNumberOfQuestions}`);
+      $('.quiz-section').hide();
+      $('.start-section').hide();
+      $('.result-section').show();
+    }
+    
+    else {
+      currentQuestionNumber++;
+      $('#scoreDisplay').html(`Your Score Is ${totalNumberOfCorrectAnswers}/${currentQuestionNumber}`);      
+      questionDisplay();
+    }
+  });
+}
+
+function restartQuiz(){
+  $('.result-section').on('click', '#tryagain', function(){
+    $('.start-section').show();
+    $('.quiz-section').hide();
+    $('.result-section').hide();
+    currentQuestionNumber = 0;
+    totalNumberOfCorrectAnswers = 0;
+  }
+  );
+}
 
 
 
 function handleQuizApp(){
   startQuiz();
-  // answerQuestions();
+  answerQuestions();
+  restartQuiz();
 }
 
 $(handleQuizApp());
