@@ -13,7 +13,6 @@ body {
   height: 100vh;
   width: 100vw;
   background: white;
-  
 }
 
 h1 {
@@ -33,9 +32,7 @@ h1 {
 .quiz-section {
   align-content: flex-end;
   flex-direction: column;
-
 }
-
 
 #question-wrapper {
   background-color: blue;
@@ -63,7 +60,7 @@ h1 {
   flex-direction: column;
 }
 
-.finalScore {
+.final-score {
   background-color: #F29D36;
 }
 

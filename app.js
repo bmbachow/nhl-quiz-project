@@ -41,7 +41,6 @@ function questionDisplay(){
   $('#questionNumberDisplay').text(`Question ${currentQuestionNumber + 1} of ${totalNumberOfQuestions}`);
 }
 
-
 function startQuiz(){
   $('#startQuizButton').click(function(){
     $('.result-section').hide();
@@ -58,15 +57,16 @@ function answerQuestions(){
     let correctAnswer = questionsArray[currentQuestionNumber].questionCorrectChoice;
     if (userAnswer == correctAnswer){
       totalNumberOfCorrectAnswers++;
-      $('#images').html('<img class=\'celly\' src=\'images/celebration.jpg\'>');
+      $('#images').html('<h3>Correct!</h3><img class=\'celly\' src=\'images/celebration.jpg\'>');
     }
     
     else {
-      $('#images').html('<h3>The correct answer was ' + correctAnswer +'.</h3><img class=\'celly\' src=\'images/bodycheck.jpg\'>');
+      $('#images').html('<h3>The correct answer was ' + correctAnswer.questionChoices +'.</h3><img class=\'celly\' src=\'images/bodycheck.jpg\'>');
+      $('#result_message').html('<h3>The correct answer was ' + correctAnswer.questionChoices + '.</h3>');
     }
 
     if ((currentQuestionNumber + 1) === totalNumberOfQuestions){
-      $('.finalScore').text(`${totalNumberOfCorrectAnswers}/${totalNumberOfQuestions}`);
+      $('.final-score').text(`${totalNumberOfCorrectAnswers}/${totalNumberOfQuestions}`);
       $('.quiz-section').hide();
       $('.start-section').hide();
       $('.result-section').show();
@@ -85,13 +85,13 @@ function restartQuiz(){
     $('.start-section').show();
     $('.quiz-section').hide();
     $('.result-section').hide();
+    $('#images').html('');
+    $('#scoreDisplay').html('');
     currentQuestionNumber = 0;
     totalNumberOfCorrectAnswers = 0;
   }
   );
 }
-
-
 
 function handleQuizApp(){
   startQuiz();
