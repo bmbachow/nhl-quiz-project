@@ -54,15 +54,18 @@ function startQuiz(){
 function answerQuestions(){
   $('.quiz-section').on('click', '.option', function(){
     let userAnswer = $('input[class="option"]:checked').val();
+    userAnswer = Number(userAnswer);
+    console.log(typeof userAnswer);
     let correctAnswer = questionsArray[currentQuestionNumber].questionCorrectChoice;
-    if (userAnswer == correctAnswer){
+    if (userAnswer === correctAnswer){
       totalNumberOfCorrectAnswers++;
       $('#images').html('<h3>Correct!</h3><img class=\'celly\' src=\'images/celebration.jpg\'>');
     }
     
     else {
-      $('#images').html('<h3>The correct answer was ' + correctAnswer.questionChoices +'.</h3><img class=\'celly\' src=\'images/bodycheck.jpg\'>');
-      $('#result_message').html('<h3>The correct answer was ' + correctAnswer.questionChoices + '.</h3>');
+      const creditedResponse = questionsArray[currentQuestionNumber].questionChoices[correctAnswer];
+      $('#images').html('<h3>The correct answer was ' + creditedResponse +'.</h3><img class=\'celly\' src=\'images/bodycheck.jpg\'>');
+      $('#result_message').html('<h3>The correct answer was ' + creditedResponse + '.</h3>');
     }
 
     if ((currentQuestionNumber + 1) === totalNumberOfQuestions){
